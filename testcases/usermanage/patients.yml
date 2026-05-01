@@ -1,0 +1,80 @@
+# ============================================
+# 患者接口 - 参数化测试用例
+# 这些接口都需要先登录拿到Token才能访问
+# ============================================
+
+# 用例1：获取患者列表
+-
+  name: 获取患者列表-默认分页
+  description: 不传分页参数，获取第一页患者数据
+  request:
+    url: http://localhost:3000/api/patients
+    method: get
+    headers: {}
+    data: {}
+  expected:
+    status_code: 200
+
+# 用例2：分页查询第2页
+-
+  name: 获取患者列表-第2页
+  description: 查询第2页数据，应该返回空（总共只有10条）
+  request:
+    url: http://localhost:3000/api/patients
+    method: get
+    headers: {}
+    data:
+      page: 2
+      pageSize: 10
+  expected:
+    status_code: 200
+
+# 用例3：按姓名搜索
+-
+  name: 搜索患者-按姓名
+  description: 搜索姓王的患者
+  request:
+    url: http://localhost:3000/api/patients/search
+    method: get
+    headers: {}
+    data:
+      name: 王
+  expected:
+    status_code: 200
+
+# 用例4：按科室搜索
+-
+  name: 搜索患者-按科室
+  description: 搜索内科的患者
+  request:
+    url: http://localhost:3000/api/patients/search
+    method: get
+    headers: {}
+    data:
+      department: 内科
+  expected:
+    status_code: 200
+
+# 用例5：查询存在的患者详情
+-
+  name: 查询患者详情-ID存在
+  description: 查询ID为1的患者详情
+  request:
+    url: http://localhost:3000/api/patients/1
+    method: get
+    headers: {}
+    data: {}
+  expected:
+    status_code: 200
+
+# 用例6：查询不存在的患者
+-
+  name: 查询患者详情-ID不存在
+  description: 查询ID为999的患者，应返回404
+  request:
+    url: http://localhost:3000/api/patients/999
+    method: get
+    headers: {}
+    data: {}
+  expected:
+    status_code: 404

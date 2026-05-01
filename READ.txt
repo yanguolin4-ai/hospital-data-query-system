@@ -1,0 +1,19 @@
+# 医院数据资料登录查询系统
+一个用于学习前后端交互、接口测试的轻量项目，包含登录、患者/医生查询、数据统计和接口测试功能。
+
+## 技术栈
+- 后端：Node.js + Express
+- 前端：HTML + CSS + JavaScript（Bootstrap 5 + Chart.js）
+- 数据：内存模拟数据，无需数据库
+
+## 快速启动
+1.  安装 [Node.js](https://nodejs.org/)（推荐 LTS 版本）
+2.  克隆项目到本地
+    ```bash
+    git clone 你的仓库地址
+    cd hospital-api-learning
+    npm install
+    node server.js
+启动
+
+前端：http://localhost:3000/login.html
